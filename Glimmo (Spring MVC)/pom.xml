@@ -8,28 +8,31 @@
 	<name>Glimmo</name>
 	<description>Showcase project using Spring MVC</description>
 
+	<properties>
+		<spring-version>3.1.1.RELEASE</spring-version>
+		<hibernate-version>4.1.2.Final</hibernate-version>
+	</properties>
+
 	<build>
-		<!-- specifiy which directory within the project hierarchy will be considered 
-			as the root directory from the generated war file -->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<webResources>
-						<resource>
-							<directory>${build.sourceDirectory}</directory>
-							<targetPath>sources</targetPath>
-						</resource>
-					</webResources>
+					<!-- Uncomment the webResources section to include the sources (.java files) -->
+					<!-- <webResources> <resource> <directory>${build.sourceDirectory}</directory> 
+						<targetPath>sources</targetPath> </resource> </webResources> -->
+
+					<!-- specifiy which directory within the project hierarchy will be considered 
+						as the root directory from the generated war file -->
 					<warSourceDirectory>WebContent</warSourceDirectory>
 				</configuration>
 			</plugin>
 			<!-- copy the generated war file to the tomcat deployment directory -->
-			<!-- <plugin> <artifactId>maven-antrun-plugin</artifactId> <executions> 
-				<execution> <phase>package</phase> <configuration> <tasks> <copy file="target\SpringMVCSample-0.0.1-SNAPSHOT.war" 
-				todir="D:\Develtools\apache-tomcat-6.0.32\webapps" /> </tasks> </configuration> 
-				<goals> <goal>run</goal> </goals> </execution> </executions> </plugin> -->
+			<!-- <plugin> <artifactId>maven-antrun-plugin</artifactId> <executions> <execution> 
+				<phase>package</phase> <configuration> <tasks> <copy file="target\SpringMVCSample-0.0.1-SNAPSHOT.war" 
+				todir="D:\Develtools\apache-tomcat-6.0.32\webapps" /> </tasks> </configuration> <goals> 
+				<goal>run</goal> </goals> </execution> </executions> </plugin> -->
 		</plugins>
 	</build>
 
@@ -38,17 +41,36 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>3.1.1.RELEASE</version>
+			<version>${spring-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>3.1.1.RELEASE</version>
+			<version>${spring-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>3.1.1.RELEASE</version>
+			<version>${spring-version}</version>
+		</dependency>
+		<!-- Hibernate dependencies -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate-version}</version>
+		</dependency>
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-entitymanager</artifactId> 
+			<version>${hibernate-version}</version> </dependency> -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>${hibernate-version}</version>
+		</dependency>
+		<!-- Logging dependencies -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.8</version>
 		</dependency>
 	</dependencies>
 </project>
