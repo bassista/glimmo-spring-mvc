@@ -18,6 +18,9 @@
 
 	<!-- Externalizing the datasource configuration to the db.properties file -->
 	<context:property-placeholder location="classpath:db.properties" />
+	
+	<!-- Enabling Spring MVC configuration through annotations -->
+	<mvc:annotation-driven/>
 
 	<!-- Hibernate SessionFactory -->
 	<bean id="sessionFactory"
