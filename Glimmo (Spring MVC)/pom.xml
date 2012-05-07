@@ -44,7 +44,7 @@
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
-						<phase>deploy</phase>
+						<phase>package</phase>
 						<configuration>
 							<tasks>
 								<copy file="target\glimmo-spring-mvc-0.0.1-SNAPSHOT.war" todir="D:\Develtools\apache-tomcat-6.0.32\webapps" />
