@@ -40,10 +40,22 @@
 				</configuration>
 			</plugin>
 			<!-- copy the generated war file to the tomcat deployment directory -->
-			<!-- <plugin> <artifactId>maven-antrun-plugin</artifactId> <executions> <execution> 
-				<phase>package</phase> <configuration> <tasks> <copy file="target\SpringMVCSample-0.0.1-SNAPSHOT.war" 
-				todir="D:\Develtools\apache-tomcat-6.0.32\webapps" /> </tasks> </configuration> <goals> 
-				<goal>run</goal> </goals> </execution> </executions> </plugin> -->
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>deploy</phase>
+						<configuration>
+							<tasks>
+								<copy file="target\glimmo-spring-mvc-0.0.1-SNAPSHOT.war" todir="D:\Develtools\apache-tomcat-6.0.32\webapps" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
