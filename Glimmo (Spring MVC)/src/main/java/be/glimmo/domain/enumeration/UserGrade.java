@@ -1,4 +1,4 @@
-package be.glimmo.domain;
+package be.glimmo.domain.enumeration;
 
 /**
  * Enumeration defining the different user categories. These will be used for authorization purpose

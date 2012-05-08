@@ -1,7 +1,15 @@
 package be.glimmo.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+
+import be.glimmo.domain.enumeration.HeatingType;
 
 @Entity(name="HOUSING")
 public abstract class Housing extends Good{
@@ -41,6 +49,10 @@ public abstract class Housing extends Good{
 	@Column(name="CELLAR")
 	private boolean cellar;
 
+	/* ---------------------- Mapped relationships ----------------------- */
+	@OneToMany(cascade={CascadeType.ALL}, orphanRemoval=true, fetch=FetchType.LAZY)
+	private List<Room> rooms = new ArrayList<Room>();
+	
 	/* ------------------------- GETTER + SETTER ------------------------- */
 	public Double getLivingArea() {
 		return livingArea;
@@ -136,5 +148,13 @@ public abstract class Housing extends Good{
 	
 	public void setCellar(boolean cellar) {
 		this.cellar = cellar;
+	}
+	
+	public List<Room> getRooms() {
+		return rooms;
+	}
+	
+	public boolean addRoom(Room room){
+		return this.rooms.add(room);
 	}
 }

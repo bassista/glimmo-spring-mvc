@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import be.glimmo.domain.enumeration.UserGrade;
 import be.glimmo.util.Encrypter;
 
 @Entity(name="Users")
