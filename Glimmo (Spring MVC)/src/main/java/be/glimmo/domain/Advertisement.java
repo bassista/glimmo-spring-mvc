@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -48,6 +50,10 @@ public class Advertisement {
 	
 	@OneToMany(fetch=FetchType.LAZY, orphanRemoval=true)
 	private Set<Picture> pictures = new HashSet<Picture>();
+	
+	@OneToOne(cascade={CascadeType.ALL}, optional=false, fetch=FetchType.LAZY)
+	@JoinColumn(name="GOOD_ID")
+	private Good good;
 	
 	/* -------------------------- Constructors --------------------------- */
 	public Advertisement(){}
@@ -120,6 +126,19 @@ public class Advertisement {
 	
 	public boolean removePicture(Picture picture){
 		return this.pictures.remove(picture);
+	}
+	
+	public Good getGood() {
+		return good;
+	}
+	
+	/**
+	 * Setting the given Good instance to the current Advertisement instance and reciprocate the relationship
+	 * @param good
+	 */
+	public void setGood(Good good) {
+		this.good = good;
+		good.setAd(this);
 	}
 	
 	/* ------------------------- Hash / Equals ------------------------- */

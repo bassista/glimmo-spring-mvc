@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.sql.rowset.serial.SerialClob;
 
 @Entity(name="GOOD")
@@ -38,6 +39,9 @@ public abstract class Good {
 	/* ---------------------- Mapped relationships ----------------------- */
 	@OneToMany(cascade={CascadeType.ALL}, orphanRemoval=true, fetch=FetchType.EAGER)
 	private Set<Price> priceHistory = new TreeSet<Price>();
+	
+	@OneToOne(fetch=FetchType.LAZY, mappedBy="good")
+	private Advertisement ad;
 	
 	/* ------------------------- GETTER + SETTER ------------------------- */
 	public long getId() {
@@ -86,6 +90,14 @@ public abstract class Good {
 	
 	public void setLocation(Location location) {
 		this.location = location;
+	}
+	
+	public Advertisement getAd() {
+		return ad;
+	}
+	
+	public void setAd(Advertisement ad) {
+		this.ad = ad;
 	}
 	
 	/* ----------------------- Convenience methods ----------------------- */
