@@ -20,7 +20,10 @@
 	<context:property-placeholder location="classpath:db.properties" />
 	
 	<!-- Enabling Spring MVC configuration through annotations -->
-	<mvc:annotation-driven/>
+ 	<mvc:annotation-driven/>
+	
+	<!-- Configuring mapping and location of static resources -->
+	<mvc:resources location="/resources/**" mapping="/resources/" />
 
 	<!-- Hibernate SessionFactory -->
 	<bean id="sessionFactory"
@@ -49,5 +52,8 @@
 		</property>
 		<property name="packagesToScan" value="be.glimmo.domain" />
 	</bean>
-
+	
+	<!-- Defining the view resolver we'll be using -->
+	
+	
 </beans>
