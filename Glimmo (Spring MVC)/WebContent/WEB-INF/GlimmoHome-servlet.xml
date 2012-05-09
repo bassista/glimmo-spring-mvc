@@ -18,10 +18,10 @@
 
 	<!-- Externalizing the datasource configuration to the db.properties file -->
 	<context:property-placeholder location="classpath:db.properties" />
-	
+
 	<!-- Enabling Spring MVC configuration through annotations -->
- 	<mvc:annotation-driven/>
-	
+	<mvc:annotation-driven />
+
 	<!-- Configuring mapping and location of static resources -->
 	<mvc:resources location="/resources/**" mapping="/resources/" />
 
@@ -30,30 +30,29 @@
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.connection.provider_class">com.jolbox.bonecp.provider.BoneCPConnectionProvider</prop>
 				<prop key="hibernate.connection.driver_class">${jdbc.driverClassName}</prop>
-				<prop key="hibernate.connection.url">${jdbc.url}</prop>
 				<prop key="hibernate.connection.username">${jdbc.username}</prop>
 				<prop key="hibernate.connection.password">${jdbc.password}</prop>
+				<prop key="hibernate.connection.url">${jdbc.url}</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
+
+				<!-- Use the C3P0 connection pool provider -->
+				<prop key="hibernate.c3p0.min_size">5</prop>
+				<prop key="hibernate.c3p0.max_size">20</prop>
+				<prop key="hibernate.c3p0.timeout">1800</prop>
+				<prop key="hibernate.c3p0.max_statements">50</prop>
+				<prop key="hibernate.c3p0.idle_test_period">300</prop>
+
+				<!-- Show and print nice SQL on stdout -->
 				<prop key="show_sql">true</prop>
-				<prop key="log_level">DEBUG</prop>
-				<!-- Properties to configure BoneCP connection pool -->
-				<prop key="bonecp.idleMaxAge">240</prop>
-				<prop key="bonecp.idleConnectionTestPeriod">60</prop>
-				<prop key="bonecp.partitionCount">3</prop>
-				<prop key="bonecp.acquireIncrement">10</prop>
-				<prop key="bonecp.maxConnectionsPerPartition">60</prop>
-				<prop key="bonecp.minConnectionsPerPartition">20</prop>
-				<prop key="bonecp.statementsCacheSize">50</prop>
-				<prop key="bonecp.releaseHelperThreads">3</prop>
+				<prop key="format_sql">true</prop>
 			</props>
 		</property>
 		<property name="packagesToScan" value="be.glimmo.domain" />
 	</bean>
-	
+
 	<!-- Defining the view resolver we'll be using -->
-	
-	
+
+
 </beans>
