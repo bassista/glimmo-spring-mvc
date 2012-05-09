@@ -12,6 +12,7 @@ public class HomeController {
 	
 	@RequestMapping(method=GET, value={"/", "/home"})
 	public String test(HttpSession session){
+		System.out.println("Working on branch");
 		return "home";
 	}
 }
