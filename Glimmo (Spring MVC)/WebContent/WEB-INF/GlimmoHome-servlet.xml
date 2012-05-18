@@ -53,6 +53,25 @@
 	</bean>
 
 	<!-- Defining the view resolver we'll be using -->
-
+	<bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver"/>
+	
+	<!-- Configuring the TilesViewConfigurer bean on which the view resolver will rely upon -->
+	<bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>WEB-INF/tiles-view-definitions.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Mapping "homepage" URL to Home controller -->
+	<bean id="unAuthenticatedUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/index.do">HomeController</prop>
+				<prop key="/index.html">HomeController</prop>
+			</props>
+		</property>
+	</bean>
 
 </beans>
