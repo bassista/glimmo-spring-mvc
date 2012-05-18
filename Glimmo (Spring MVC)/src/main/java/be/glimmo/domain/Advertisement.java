@@ -21,6 +21,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import be.glimmo.domain.enumeration.AdvertisementType;
+
 @Entity(name="Ad")
 @Table(name="ADVERTISEMENT")
 public class Advertisement {
@@ -40,6 +42,9 @@ public class Advertisement {
 	@Temporal(TemporalType.DATE)
 	private Date deadline;
 	
+	@Column(name="ADVERTISEMENT_TYPE")
+	private AdvertisementType adType;
+	
 	/* ---------------------- Mapped relationships ----------------------- */
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	@JoinColumn(name="USER_ID")
@@ -58,10 +63,11 @@ public class Advertisement {
 	/* -------------------------- Constructors --------------------------- */
 	public Advertisement(){}
 	
-	public Advertisement(boolean active, Date publicationDate, Date deadline){
+	public Advertisement(boolean active, Date publicationDate, Date deadline, AdvertisementType adType){
 		this.active = active;
 		this.publicationDate = publicationDate;
 		this.deadline = deadline;
+		this.adType = adType;
 	}
 	
 	/* ------------------------- GETTER + SETTER ------------------------- */
@@ -139,6 +145,10 @@ public class Advertisement {
 	public void setGood(Good good) {
 		this.good = good;
 		good.setAd(this);
+	}
+	
+	public AdvertisementType getAdType() {
+		return adType;
 	}
 	
 	/* ------------------------- Hash / Equals ------------------------- */
