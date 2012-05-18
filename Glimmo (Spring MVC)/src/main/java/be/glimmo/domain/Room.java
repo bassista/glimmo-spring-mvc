@@ -1,14 +1,18 @@
 package be.glimmo.domain;
 
-import java.sql.Clob;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import be.glimmo.domain.enumeration.Language;
 import be.glimmo.domain.enumeration.RoomType;
 
 @Entity(name="Room")
@@ -24,17 +28,17 @@ public class Room {
 
 	@Column(name="DIMENSION", nullable=false, precision=2)
 	private Double dimension;
-
-	@Column(name="DESCRIPTION", length=200)
-	private Clob description;
+	
+	/* ---------------------- Mapped relationships ----------------------- */
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	private Set<Description> descriptions = new HashSet<Description>(); 
 
 	/* -------------------------- Constructors --------------------------- */
 	public Room(){}
 
-	public Room(RoomType type, Double dimension, Clob description){
+	public Room(RoomType type, Double dimension){
 		this.type = type;
 		this.dimension = dimension;
-		this.description = description;
 	}
 
 	/* ------------------------- GETTER + SETTER ------------------------- */
@@ -58,12 +62,22 @@ public class Room {
 		this.dimension = dimension;
 	}
 
-	public Clob getDescription() {
-		return description;
+	public Set<Description> getDescriptions() {
+		return descriptions;
 	}
-
-	public void setDescription(Clob description) {
-		this.description = description;
+	
+	public boolean addDescription(Description description){
+		return this.descriptions.add(description);
+	}
+	
+	public Description getDescriptionForLanguage(Language language){
+		for(Description desc : descriptions){
+			if(desc.getLanguage().equals(language)){
+				return desc;
+			}
+		}
+		
+		return null;
 	}
 
 	/* -------------------------- Hash / Equals -------------------------- */

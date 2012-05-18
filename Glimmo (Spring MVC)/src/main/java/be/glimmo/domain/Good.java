@@ -1,8 +1,9 @@
+
 package be.glimmo.domain;
 
 import java.math.BigDecimal;
-import java.sql.Clob;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
@@ -18,7 +19,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.sql.rowset.serial.SerialClob;
+
+import be.glimmo.domain.enumeration.Language;
 
 @Entity(name="GOOD")
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
@@ -28,12 +30,10 @@ public abstract class Good {
 	@Column(name="GOOD_ID")
 	private Long id = null;
 	
-	@Column(name="DESCRIPTION", length=400, nullable=false)
-	private Clob description;
-	
 	@Column(name="SURFACE", scale=2)
 	private Double surface;
 	
+	// embedded attribute
 	private Location location;
 	
 	/* ---------------------- Mapped relationships ----------------------- */
@@ -43,25 +43,12 @@ public abstract class Good {
 	@OneToOne(fetch=FetchType.LAZY, mappedBy="good")
 	private Advertisement ad;
 	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	private Set<Description> descriptions = new HashSet<Description>(); 
+	
 	/* ------------------------- GETTER + SETTER ------------------------- */
 	public long getId() {
 		return id;
-	}
-	
-	public Clob getDescription() {
-		return description;
-	}
-	
-	public void setDescription(Clob description) {
-		this.description = description;
-	}
-	
-	public void setDescriptionAsString(String description) {
-		try {
-			this.description = new SerialClob(description.toCharArray());
-		} catch (Throwable t) {
-			throw new IllegalArgumentException("an error occurred when setting a String description to a good", t);
-		} 
 	}
 	
 	public Double getSurface() {
@@ -98,6 +85,24 @@ public abstract class Good {
 	
 	public void setAd(Advertisement ad) {
 		this.ad = ad;
+	}
+	
+	public Set<Description> getDescriptions() {
+		return descriptions;
+	}
+	
+	public boolean addDescription(Description description){
+		return this.descriptions.add(description);
+	}
+	
+	public Description getDescriptionForLanguage(Language language){
+		for(Description desc : descriptions){
+			if(desc.getLanguage().equals(language)){
+				return desc;
+			}
+		}
+		
+		return null;
 	}
 	
 	/* ----------------------- Convenience methods ----------------------- */
