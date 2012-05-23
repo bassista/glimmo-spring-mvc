@@ -9,9 +9,17 @@
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 	
+	
 	<servlet>
 		<servlet-name>GlimmoHome</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- Overriding Spring MVC default behavior -->
+		<init-param>
+			<description>Overriding the default behavior : DispatcherServlet Spring configuration file won't be looked for in 
+		     the WEB-INF directory</description>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:GlimmoHome-servlet.xml</param-value>
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
