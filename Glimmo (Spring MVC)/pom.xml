@@ -12,6 +12,7 @@
 		<spring-version>3.1.1.RELEASE</spring-version>
 		<hibernate-version>3.6.10.Final</hibernate-version>
 		<tiles-version>2.2.2</tiles-version>
+		<derby-version>10.8.2.2</derby-version>
 	</properties>
 
 	<build>
@@ -33,6 +34,10 @@
 				<version>2.12</version>
 				<configuration>
 					<skipTests>true</skipTests>
+					<!-- Configuring the test suites to execute (relative path starting from the root project)-->
+            	<suiteXmlFiles>
+            		<suiteXmlFile>src/test/resources/testsuite-persistence-layer.xml</suiteXmlFile>
+            	</suiteXmlFiles>
 				</configuration>
 			</plugin>
 			<!-- Plugin to copy the generated war file to the tomcat deployment directory (by executing ANT target)-->
@@ -73,6 +78,13 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring-version}</version>
 		</dependency>
+		<!-- Spring dependency to get testing features -->
+		<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-test</artifactId>
+    		<version>${spring-version}</version>
+    		<scope>test</scope>
+		</dependency>
 		<!-- Spring support for Hibernate -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -101,6 +113,7 @@
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>6.3.1</version>
+			<scope>test</scope>
 		</dependency>
 		<!-- Apache foundation's commons projects -->
 		<dependency>
@@ -112,7 +125,7 @@
 		<dependency>
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derbyclient</artifactId>
-			<version>10.8.2.2</version>
+			<version>${derby-version}</version>
 		</dependency>
 		<!-- Log4J dependencies -->
 		<dependency>
@@ -161,5 +174,18 @@
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>1.6.1</version>
 		</dependency>
+		<!-- Dependencies to run unit tests against an embedded Apache Derby DB -->
+		<dependency>
+    		<groupId>org.apache.derby</groupId>
+    		<artifactId>derby</artifactId>
+    		<version>${derby-version}</version>
+    		<scope>test</scope>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.derby</groupId>
+    		<artifactId>derbytools</artifactId>
+    		<version>${derby-version}</version>
+    		<scope>test</scope>
+		</dependency>		
 	</dependencies>
 </project>
