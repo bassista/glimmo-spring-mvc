@@ -11,7 +11,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
-public abstract class GenericDaoImpl <T, PK extends Serializable> implements BeanPostProcessor, GenericDao<T, Serializable>{
+public abstract class GenericDaoImpl <T, ID extends Serializable> implements BeanPostProcessor, GenericDao<T, ID>{
 	@Autowired(required=true)
 	private SessionFactory sessionFactory;
 	private Session currentSession;

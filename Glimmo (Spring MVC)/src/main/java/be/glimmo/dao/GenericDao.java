@@ -8,17 +8,17 @@ import java.util.List;
  * @author kar.hoo.yiu
  *
  * @param <T>
- * @param <PK>
+ * @param <ID>
  */
-public interface GenericDao <T, PK extends Serializable>{
+public interface GenericDao <T, ID extends Serializable>{
 	public void save(T entity);
 	public void saveOrUpdate(T entity);
 	
 	public long countAll();
 	public List<T> findPage(int pageStart, int pageSize);
 	public List<T> findAll();
-	public T findById(PK id);
+	public T findById(ID id);
 	
 	public void delete(T entity);
-	public void delete(PK id);
+	public void delete(ID id);
 }
