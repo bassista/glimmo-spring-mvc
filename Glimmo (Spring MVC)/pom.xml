@@ -35,7 +35,7 @@
 					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
-			<!-- copy the generated war file to the tomcat deployment directory -->
+			<!-- Plugin to copy the generated war file to the tomcat deployment directory (by executing ANT target)-->
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
@@ -43,7 +43,8 @@
 						<phase>package</phase>
 						<configuration>
 							<tasks>
-								<copy file="target\glimmo-spring-mvc-0.0.1-SNAPSHOT.war" todir="D:\Develtools\apache-tomcat-6.0.32\webapps" />
+								<!-- Using an environment variable to determine an environment-specific Tomcat location -->
+								<copy file="target\glimmo-spring-mvc-0.0.1-SNAPSHOT.war" todir="${env.GLIMMO_TOMCAT_HOME}" />
 							</tasks>
 						</configuration>
 						<goals>
