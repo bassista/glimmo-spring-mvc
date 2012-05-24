@@ -1,6 +1,7 @@
 package be.glimmo.dao;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -72,19 +73,15 @@ public abstract class GenericDaoImpl <T, PK extends Serializable> implements Bea
 	}
 	
 	/* -------------------- Bean creation hook methods ------------------- */
+	@SuppressWarnings("unchecked")
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-//		type = ((Class) type).getGenericSuperclass();
-//    } else {
-//            ParameterizedType parameterizedType = (ParameterizedType) type;
-//            Class<?> rawType = (Class) parameterizedType.getRawType();
-//
-//            Type[] actualTypeArguments = parameterizedType
-		// TODO Auto-generated method stub
-		return null;
+		ParameterizedType paramType = (ParameterizedType) getClass().getGenericSuperclass();
+		this.persistentClass = (Class<T>) paramType.getActualTypeArguments()[0];
+		
+		return this;
 	}
 	
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 }
