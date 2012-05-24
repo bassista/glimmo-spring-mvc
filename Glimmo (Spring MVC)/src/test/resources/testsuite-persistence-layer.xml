@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="SuitePersistenceLayer" verbose="1">
+	<test name="TestAdvertisementDao" verbose="10">
+		<packages>
+			<package name="be.glimmo.dao" />
+		</packages>
+	</test>
+</suite>
