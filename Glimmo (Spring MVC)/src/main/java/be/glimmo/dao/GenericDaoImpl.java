@@ -4,19 +4,22 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
+import javax.persistence.Entity;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.BeanPostProcessor;
 
-public abstract class GenericDaoImpl <T, ID extends Serializable> implements BeanPostProcessor, GenericDao<T, ID>{
+
+public abstract class GenericDaoImpl <T, ID extends Serializable> implements GenericDao<T, ID>{
 	@Autowired(required=true)
 	private SessionFactory sessionFactory;
-	private Session currentSession;
-	// TODO set attribute value at bean construction
-	private Class<T> persistentClass;
+	private String entityName;
+	
+	public GenericDaoImpl(){
+		initializeEntityName();
+	}
 	
 	public void save(T entity) {
 		getSession().save(entity);
@@ -27,61 +30,62 @@ public abstract class GenericDaoImpl <T, ID extends Serializable> implements Bea
 	}
 	
 	public long countAll(){
-		Query query = getSession().createQuery("count(e) FROM " + getPersistentClass().getName() + " e ");
+		Query query = getSession().createQuery("count(e) FROM " + getEntityName() + " e ");
 		return (Long) query.uniqueResult();
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	public List<T> findPage(int pageStart, int pageSize){
-		// TODO complete
-		return null;
+		Query query = getSession().createQuery("FROM " + getEntityName() + " e");
+		query.setFirstResult(pageStart);
+		query.setMaxResults(pageSize);
+		return query.list();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<T> findAll(){
-		// TODO complete
-				return null;
+		Query query = getSession().createQuery("FROM " + getEntityName() + " e ");
+		return query.list();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public T findById(Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
+		return (T) getSession().get(getEntityName(), id);
 	}
 	
-	public void delete(Serializable id) {
-		// TODO Auto-generated method stub
-	}
 	
 	public void delete(T entity) {
+		getSession().delete(entity);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void delete(ID id) {
+		T entity = (T) getSession().get(getEntityName(), id);
 		
+		if(entity != null){
+			getSession().delete(entity);
+		}
 	}
 	
 	/* ------------------------- GETTER + SETTER ------------------------- */
 	public Session getSession(){
-		if(currentSession == null){
-			currentSession = sessionFactory.getCurrentSession();
-		}
-		
-		return currentSession;
+		return sessionFactory.getCurrentSession();
 	}
 	
-	public void setSession(Session session){
-		currentSession = session;
+	public final String getEntityName() {
+		return entityName;
 	}
 	
-	public Class<T> getPersistentClass(){
-		return this.persistentClass;
-	}
-	
-	/* -------------------- Bean creation hook methods ------------------- */
+	/*------------------------ Convenience methods ----------------------- */
 	@SuppressWarnings("unchecked")
-	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+	public void initializeEntityName(){
 		ParameterizedType paramType = (ParameterizedType) getClass().getGenericSuperclass();
-		this.persistentClass = (Class<T>) paramType.getActualTypeArguments()[0];
+		Class<T> persistentClass =  (Class<T>) paramType.getActualTypeArguments()[0];
+		this.entityName = persistentClass.getAnnotation(Entity.class).name();
 		
-		return this;
-	}
-	
-	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-		return this;
+		if(this.entityName == null){
+			this.entityName = persistentClass.getName();
+		}
 	}
 }
