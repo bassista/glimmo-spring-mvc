@@ -10,7 +10,7 @@ import be.glimmo.domain.Advertisement;
 import be.glimmo.domain.Good;
 import be.glimmo.domain.enumeration.AdvertisementType;
 
-@Repository("AdvertisementDao")
+@Repository
 public class AdvertisementDaoImpl extends GenericDaoImpl<Advertisement, Long> implements AdvertisementDao {
 
 	public Advertisement findById(Long id) {
@@ -19,14 +19,14 @@ public class AdvertisementDaoImpl extends GenericDaoImpl<Advertisement, Long> im
 
 	@SuppressWarnings("unchecked")
 	public List<Advertisement> listAdvertisementByType(AdvertisementType advertisementType) {
-		Criteria criteria = getSession().createCriteria(getPersistentClass());
+		Criteria criteria = getSession().createCriteria(getEntityName());
 		criteria.add(Restrictions.eq("adType", advertisementType));
 		return criteria.list();
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Advertisement> listAdvertisementByType(AdvertisementType advertisementType, boolean isActive) {
-		Criteria criteria = getSession().createCriteria(getPersistentClass());
+		Criteria criteria = getSession().createCriteria(getEntityName());
 		criteria.add(Restrictions.eq("adType", advertisementType));
 		criteria.add(Restrictions.eq("active", isActive));
 		return criteria.list();
