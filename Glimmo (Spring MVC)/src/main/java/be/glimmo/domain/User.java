@@ -37,7 +37,6 @@ public class User {
 	@Column(name="LAST_NAME", length=30)
 	private String lastName;
 	
-	@Column(length=16)
 	private String password;
 	
 	@Column(nullable=false)
