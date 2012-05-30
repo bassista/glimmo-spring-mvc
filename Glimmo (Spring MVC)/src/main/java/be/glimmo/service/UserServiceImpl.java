@@ -33,4 +33,9 @@ public class UserServiceImpl implements UserService {
 		userDao.save(user);
 	}
 
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public User findUserById(Long id) {
+		return userDao.findById(id);
+	}
+
 }
