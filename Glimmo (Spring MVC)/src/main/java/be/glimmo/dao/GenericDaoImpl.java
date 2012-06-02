@@ -92,6 +92,7 @@ public abstract class GenericDaoImpl <T, ID extends Serializable> implements Gen
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void initializePersistentClass(){
 		ParameterizedType paramType = (ParameterizedType) getClass().getGenericSuperclass();
 		this.persistentClass =  (Class<T>) paramType.getActualTypeArguments()[0];
