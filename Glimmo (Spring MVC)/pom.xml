@@ -34,13 +34,15 @@
 				<version>2.12</version>
 				<configuration>
 					<skipTests>true</skipTests>
-					<!-- Configuring the test suites to execute (relative path starting from the root project)-->
-            	<suiteXmlFiles>
-            		<suiteXmlFile>src/test/resources/testsuite-persistence-layer.xml</suiteXmlFile>
-            	</suiteXmlFiles>
+					<!-- Configuring the test suites to execute (relative path starting from the 
+						root project) -->
+					<suiteXmlFiles>
+						<suiteXmlFile>src/test/resources/testsuite-persistence-layer.xml</suiteXmlFile>
+					</suiteXmlFiles>
 				</configuration>
 			</plugin>
-			<!-- Plugin to copy the generated war file to the tomcat deployment directory (by executing ANT target)-->
+			<!-- Plugin to copy the generated war file to the tomcat deployment directory 
+				(by executing ANT target) -->
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
@@ -48,7 +50,8 @@
 						<phase>package</phase>
 						<configuration>
 							<tasks>
-								<!-- Using an environment variable to determine an environment-specific Tomcat location -->
+								<!-- Using an environment variable to determine an environment-specific Tomcat 
+									location -->
 								<copy file="target\glimmo-spring-mvc-0.0.1-SNAPSHOT.war" todir="${env.GLIMMO_TOMCAT_HOME}" />
 							</tasks>
 						</configuration>
@@ -60,7 +63,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 	<dependencies>
 		<!-- Spring dependencies -->
 		<dependency>
@@ -80,10 +83,10 @@
 		</dependency>
 		<!-- Spring dependency to get testing features -->
 		<dependency>
-    		<groupId>org.springframework</groupId>
-    		<artifactId>spring-test</artifactId>
-    		<version>${spring-version}</version>
-    		<scope>test</scope>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring-version}</version>
+			<scope>test</scope>
 		</dependency>
 		<!-- Spring support for Hibernate -->
 		<dependency>
@@ -155,37 +158,36 @@
 			<artifactId>tiles-servlet</artifactId>
 			<version>2.1.4</version>
 		</dependency>
-		<!-- JSTL --> 
+		<!-- JSTL -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.1.2</version>
 		</dependency>
-		<!-- standard.jar --> 
+		<!-- standard.jar -->
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
 			<version>1.1.2</version>
 		</dependency>
-		<!-- Titles 2.2.2 is depending on jcl-over-slf4j 1.5.8 while Hibernate 3.6.10 is 
-			expecting the version 1.6.1... -->
+		<!-- Titles 2.2.2 is depending on jcl-over-slf4j 1.5.8 while Hibernate 3.6.10 is expecting the version 1.6.1... -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>1.6.1</version>
 		</dependency>
-		<!-- Dependencies to run unit tests against an embedded Apache Derby DB -->
+		<!-- DB connection pool for unit testing configuration -->
 		<dependency>
-    		<groupId>org.apache.derby</groupId>
-    		<artifactId>derby</artifactId>
-    		<version>${derby-version}</version>
-    		<scope>test</scope>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>20030825.184428</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-    		<groupId>org.apache.derby</groupId>
-    		<artifactId>derbytools</artifactId>
-    		<version>${derby-version}</version>
+    		<groupId>commons-pool</groupId>
+    		<artifactId>commons-pool</artifactId>
+    		<version>20030825.183949</version>
     		<scope>test</scope>
-		</dependency>		
+		</dependency>
 	</dependencies>
 </project>
