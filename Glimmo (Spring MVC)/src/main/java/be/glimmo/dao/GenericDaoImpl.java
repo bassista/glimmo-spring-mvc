@@ -15,10 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 public abstract class GenericDaoImpl <T, ID extends Serializable> implements GenericDao<T, ID>{
 	@Autowired(required=true)
 	private SessionFactory sessionFactory;
+	private Class<T> persistentClass;
 	private String entityName;
 	
 	public GenericDaoImpl(){
 		initializeEntityName();
+		initializePersistentClass();
 	}
 	
 	public void save(T entity) {
@@ -51,7 +53,8 @@ public abstract class GenericDaoImpl <T, ID extends Serializable> implements Gen
 	
 	@SuppressWarnings("unchecked")
 	public T findById(Serializable id) {
-		return (T) getSession().get(getEntityName(), id);
+//		return (T) getSession().get(getEntityName(), id);
+		return (T) getSession().get(persistentClass, id);
 	}
 	
 	
@@ -87,5 +90,10 @@ public abstract class GenericDaoImpl <T, ID extends Serializable> implements Gen
 		if(this.entityName == null){
 			this.entityName = persistentClass.getName();
 		}
+	}
+	
+	public void initializePersistentClass(){
+		ParameterizedType paramType = (ParameterizedType) getClass().getGenericSuperclass();
+		this.persistentClass =  (Class<T>) paramType.getActualTypeArguments()[0];
 	}
 }
