@@ -15,7 +15,6 @@ public interface GenericDao <T, ID extends Serializable>{
 	public void saveOrUpdate(T entity);
 	
 	public long countAll();
-	public List<T> findPage(int pageStart, int pageSize);
 	public List<T> findAll();
 	public T findById(ID id);
 	

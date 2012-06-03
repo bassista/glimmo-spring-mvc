@@ -32,17 +32,8 @@ public abstract class GenericDaoImpl <T, ID extends Serializable> implements Gen
 	}
 	
 	public long countAll(){
-		Query query = getSession().createQuery("count(e) FROM " + getEntityName() + " e ");
+		Query query = getSession().createQuery("SELECT count(e) FROM " + getEntityName() + " e ");
 		return (Long) query.uniqueResult();
-	}
-	
-	
-	@SuppressWarnings("unchecked")
-	public List<T> findPage(int pageStart, int pageSize){
-		Query query = getSession().createQuery("FROM " + getEntityName() + " e");
-		query.setFirstResult(pageStart);
-		query.setMaxResults(pageSize);
-		return query.list();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -53,7 +44,6 @@ public abstract class GenericDaoImpl <T, ID extends Serializable> implements Gen
 	
 	@SuppressWarnings("unchecked")
 	public T findById(Serializable id) {
-//		return (T) getSession().get(getEntityName(), id);
 		return (T) getSession().get(persistentClass, id);
 	}
 	
@@ -64,7 +54,7 @@ public abstract class GenericDaoImpl <T, ID extends Serializable> implements Gen
 	
 	@SuppressWarnings("unchecked")
 	public void delete(ID id) {
-		T entity = (T) getSession().get(getEntityName(), id);
+		T entity = (T) getSession().get(persistentClass, id);
 		
 		if(entity != null){
 			getSession().delete(entity);
