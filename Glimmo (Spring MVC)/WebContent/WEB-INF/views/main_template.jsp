@@ -20,5 +20,9 @@
 	<div id="bodyContent">
 		<t:insertAttribute name="center" />
 	</div>
+	
+	<div id="right">
+		<t:insertAttribute name="right" />
+	</div>
 </body>
 </html>

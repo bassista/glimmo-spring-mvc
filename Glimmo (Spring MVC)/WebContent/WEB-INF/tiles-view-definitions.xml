@@ -7,10 +7,13 @@
 	<definition name="template" template="/WEB-INF/views/main_template.jsp">
 		<put-attribute name="top" value="/WEB-INF/views/navigation_menu.jsp" />
 		<put-attribute name="center" value="/WEB-INF/views/content.jsp" /> 
+		<put-attribute name="right" value="/WEB-INF/views/users/login.jsp" />
 	</definition>
 
 	<!-- Tile definitions -->
-	<definition name="home" extends="template">
-
+	<definition name="home" extends="template" />
+	
+	<definition name="registration" template="/WEB-INF/views/users/registration.jsp">
 	</definition>
+	
 </tiles-definitions>
