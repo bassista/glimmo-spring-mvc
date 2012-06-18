@@ -15,9 +15,9 @@ public class HomeController {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping(method=GET, value="index")
+	@RequestMapping(method=GET, value={"index", "home"})
 	public String directToHomepage(Model model){
-		model.addAttribute("newUser", new UserTransferObject());
+		model.addAttribute("loginUser", new UserTransferObject());
 		
 		return "home";
 	}

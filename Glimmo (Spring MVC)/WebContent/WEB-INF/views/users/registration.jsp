@@ -7,20 +7,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
-	<!-- 
-	<div id="loginPannel">
-		<sf:form action="login.do" method="POST" modelAttribute="newUser">
+	<div id="registrationPannel">
+		<sf:form method="POST" modelAttribute="newUser">
 			<sf:label path="username">Username</sf:label>
 			<sf:input id="username" path="username" />
-
+			
+			<sf:label path="email">Email</sf:label>
+			<sf:input id="email" path="email"/>
+			
+			<sf:label path="firstName">First name</sf:label>
+			<sf:input id="firstname" path="firstName"/>
+			
+			<sf:label path="lastName">Last name</sf:label>
+			<sf:input id="lastname" path="lastName"/>
+			
 			<sf:label path="password">Password</sf:label>
 			<sf:input id="password" path="password" />
 
-			<input type="submit" value="Sign in">
+			<input type="submit" value="Create new account">
 		</sf:form>
-		<a href="<s:url value="/register.do" />"> Register</a>
 	</div>
-	-->
-	registration form should be here
 </body>
 </html>

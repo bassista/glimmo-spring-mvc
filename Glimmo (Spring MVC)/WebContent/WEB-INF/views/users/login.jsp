@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div id="loginPannel">
-		<sf:form action="login.do" method="POST" modelAttribute="newUser">
+		<sf:form action="login.do" method="POST" modelAttribute="loginUser">
 			<sf:label path="username">Username</sf:label>
 			<sf:input id="username" path="username" />
 
