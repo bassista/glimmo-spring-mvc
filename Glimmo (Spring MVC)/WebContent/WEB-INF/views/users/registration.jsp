@@ -29,11 +29,11 @@
 				</tr>
 				<tr>
 					<td><sf:label path="password">Password</sf:label></td>
-					<td><sf:input id="password" path="password" /></td>
+					<td><sf:password id="password" path="password" /></td>
 				</tr>
 				<tr>
 					<td><sf:label path="passwordConfirmation">Retype your password</sf:label></td>
-					<td><sf:input id="passwordConfirmation" path="passwordConfirmation" /></td>
+					<td><sf:password id="passwordConfirmation" path="passwordConfirmation" /></td>
 				</tr>
 			</table>
 			<input type="submit" value="Create new account">

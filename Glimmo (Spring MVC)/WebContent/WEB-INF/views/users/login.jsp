@@ -16,7 +16,7 @@
 				</tr>
 				<tr>
 					<td><sf:label path="password">Password</sf:label></td>
-					<td><sf:input id="password" path="password" /></td>
+					<td><sf:password id="password" path="password" /></td>
 				</tr>
 			</table>
 			<input type="submit" value="Sign in">
