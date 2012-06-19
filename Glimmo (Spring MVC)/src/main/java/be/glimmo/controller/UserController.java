@@ -33,6 +33,7 @@ public class UserController {
 	public String processRegistration(Model model, @ModelAttribute(value="newUser")UserTransferObject user, @PathVariable String path){
 		// TODO clean after test (testing user persistence)
 		userService.createUser(user);
+		model.addAttribute("loginUser", user);
 		// END
 		
 		return "home";
