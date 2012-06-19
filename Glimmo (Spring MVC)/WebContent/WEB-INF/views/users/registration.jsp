@@ -9,21 +9,28 @@
 <body>
 	<div id="registrationPannel">
 		<sf:form method="POST" modelAttribute="newUser">
-			<sf:label path="username">Username</sf:label>
-			<sf:input id="username" path="username" />
-			
-			<sf:label path="email">Email</sf:label>
-			<sf:input id="email" path="email"/>
-			
-			<sf:label path="firstName">First name</sf:label>
-			<sf:input id="firstname" path="firstName"/>
-			
-			<sf:label path="lastName">Last name</sf:label>
-			<sf:input id="lastname" path="lastName"/>
-			
-			<sf:label path="password">Password</sf:label>
-			<sf:input id="password" path="password" />
-
+			<table>
+				<tr>
+					<td><sf:label path="username">Username</sf:label></td>
+					<td><sf:input id="username" path="username" /></td>
+				</tr>
+				<tr>
+					<td><sf:label path="email">Email</sf:label></td>
+					<td><sf:input id="email" path="email" /></td>
+				</tr>
+				<tr>
+					<td><sf:label path="firstName">First name</sf:label></td>
+					<td><sf:input id="firstname" path="firstName" /></td>
+				</tr>
+				<tr>
+					<td><sf:label path="lastName">Last name</sf:label></td>
+					<td><sf:input id="lastname" path="lastName" /></td>
+				</tr>
+				<tr>
+					<td><sf:label path="password">Password</sf:label></td>
+					<td><sf:input id="password" path="password" /></td>
+				</tr>
+			</table>
 			<input type="submit" value="Create new account">
 		</sf:form>
 	</div>
