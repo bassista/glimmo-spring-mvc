@@ -9,12 +9,16 @@
 <body>
 	<div id="loginPannel">
 		<sf:form action="login.do" method="POST" modelAttribute="loginUser">
-			<sf:label path="username">Username</sf:label>
-			<sf:input id="username" path="username" />
-
-			<sf:label path="password">Password</sf:label>
-			<sf:input id="password" path="password" />
-
+			<table>
+				<tr>
+					<td><sf:label path="username">Username</sf:label></td>
+					<td><sf:input id="username" path="username" /></td>
+				</tr>
+				<tr>
+					<td><sf:label path="password">Password</sf:label></td>
+					<td><sf:input id="password" path="password" /></td>
+				</tr>
+			</table>
 			<input type="submit" value="Sign in">
 		</sf:form>
 		<a href="<s:url value="/register.do" />"> Register</a>
