@@ -11,9 +11,13 @@
 	</definition>
 
 	<!-- Tile definitions -->
-	<definition name="home" extends="template" />
+	<definition name="home" extends="template" >
+	</definition>
 	
-	<definition name="registration" template="/WEB-INF/views/users/registration.jsp">
+	<!-- <definition name="registration" template="/WEB-INF/views/users/registration.jsp" /> -->
+	<definition name="registration" extends="template">
+		<put-attribute name="center" value="/WEB-INF/views/users/registration.jsp" />
+		<put-attribute name="right" value="" />
 	</definition>
 	
 </tiles-definitions>
