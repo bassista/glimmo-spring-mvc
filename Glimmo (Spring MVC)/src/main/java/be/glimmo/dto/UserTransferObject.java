@@ -10,6 +10,7 @@ public class UserTransferObject {
 	private String firstName;
 	private String lastName;
 	private String password;
+	private String passwordConfirmation;
 	private UserGrade grade;
 	private Date gradeEnding;
 
@@ -51,6 +52,14 @@ public class UserTransferObject {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getPasswordConfirmation() {
+		return passwordConfirmation;
+	}
+	
+	public void setPasswordConfirmation(String passwordConfirmation) {
+		this.passwordConfirmation = passwordConfirmation;
 	}
 
 	public UserGrade getGrade() {

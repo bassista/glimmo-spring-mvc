@@ -12,13 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 import be.glimmo.dao.UserDao;
 import be.glimmo.domain.User;
 import be.glimmo.domain.enumeration.UserGrade;
+import be.glimmo.dto.UserTransferObject;
 
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 	
-	@Transactional(propagation=Propagation.REQUIRED)
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void createUser(String username, String email, String firstname, String lastname, String password) {
 		User user = new User(username, email, firstname, lastname);
 		user.setPassword(password);
@@ -36,6 +37,11 @@ public class UserServiceImpl implements UserService {
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public User findUserById(Long id) {
 		return userDao.findById(id);
+	}
+	
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public void createUser(UserTransferObject userToCreate) {
+		createUser(userToCreate.getUsername(), userToCreate.getEmail(), userToCreate.getFirstName(), userToCreate.getLastName(), userToCreate.getPassword());
 	}
 
 }

@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="<s:url value="/resources/"/>css/registration.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div id="registrationPannel">
@@ -29,6 +30,10 @@
 				<tr>
 					<td><sf:label path="password">Password</sf:label></td>
 					<td><sf:input id="password" path="password" /></td>
+				</tr>
+				<tr>
+					<td><sf:label path="passwordConfirmation">Retype your password</sf:label></td>
+					<td><sf:input id="passwordConfirmation" path="passwordConfirmation" /></td>
 				</tr>
 			</table>
 			<input type="submit" value="Create new account">
