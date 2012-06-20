@@ -25,16 +25,7 @@
 			</list>
 		</property>
 	</bean>
-
-	<!-- Mapping "homepage" URL to Home controller -->
-	<bean id="unAuthenticatedUrlMapping"
-		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="mappings">
-			<props>
-				<prop key="/index.do">HomeController</prop>
-				<prop key="/index.html">HomeController</prop>
-			</props>
-		</property>
-	</bean>
-
+	
+	<!-- Configuring a default validator for JSR-303 validation -->
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 </beans>

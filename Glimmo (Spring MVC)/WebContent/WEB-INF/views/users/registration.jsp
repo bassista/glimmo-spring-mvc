@@ -13,27 +13,27 @@
 			<table>
 				<tr>
 					<td><sf:label path="username">Username</sf:label></td>
-					<td><sf:input id="username" path="username" /></td>
+					<td><sf:input id="username" path="username" /><br/><sf:errors path="username" cssClass="error"/></td>
 				</tr>
 				<tr>
 					<td><sf:label path="email">Email</sf:label></td>
-					<td><sf:input id="email" path="email" /></td>
+					<td><sf:input id="email" path="email" /><br/><sf:errors path="email" cssClass="error"/></td>
 				</tr>
 				<tr>
 					<td><sf:label path="firstName">First name</sf:label></td>
-					<td><sf:input id="firstname" path="firstName" /></td>
+					<td><sf:input id="firstname" path="firstName" /><br/><sf:errors path="firstName" cssClass="error"/></td>
 				</tr>
 				<tr>
 					<td><sf:label path="lastName">Last name</sf:label></td>
-					<td><sf:input id="lastname" path="lastName" /></td>
+					<td><sf:input id="lastname" path="lastName" /><br/><sf:errors path="lastName" cssClass="error"/></td>
 				</tr>
 				<tr>
 					<td><sf:label path="password">Password</sf:label></td>
-					<td><sf:password id="password" path="password" /></td>
+					<td><sf:password id="password" path="password" /><br/><sf:errors path="password" cssClass="error"/></td>
 				</tr>
 				<tr>
 					<td><sf:label path="passwordConfirmation">Retype your password</sf:label></td>
-					<td><sf:password id="passwordConfirmation" path="passwordConfirmation" /></td>
+					<td><sf:password id="passwordConfirmation" path="passwordConfirmation" /><br/><sf:errors path="passwordConfirmation" cssClass="error"/></td>
 				</tr>
 			</table>
 			<input type="submit" value="Create new account">
