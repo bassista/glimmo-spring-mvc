@@ -15,6 +15,7 @@ public class HomeController {
 	@Autowired
 	UserService userService;
 	
+	// Mapping to URI value "index" as well to handle homepage
 	@RequestMapping(method=GET, value={"index", "home"})
 	public String directToHomepage(Model model){
 		model.addAttribute("loginUser", new UserTransferObject());
