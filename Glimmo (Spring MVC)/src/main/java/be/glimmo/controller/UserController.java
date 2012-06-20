@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import be.glimmo.dto.UserTransferObject;
 import be.glimmo.service.UserService;
+import be.glimmo.validator.PasswordValidator;
 
 @Controller
 public class UserController {
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	PasswordValidator passwordValidator;
 	
 	@RequestMapping(method=RequestMethod.GET, value="register")
 	public String launchRegistration(Model model){
@@ -28,6 +32,9 @@ public class UserController {
 	public String processRegistration(Model model, @ModelAttribute(value="newUser")
 												   @Valid UserTransferObject user, 
 												   BindingResult bindingResult){
+		// executing a custom validator to check matching between the choosen password and the confirmed password
+		passwordValidator.validate(user, bindingResult);
+		
 		if(bindingResult.hasErrors()){
 			return "registration";
 		}
