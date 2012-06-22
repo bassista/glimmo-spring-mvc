@@ -4,41 +4,32 @@ import java.sql.Date;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import be.glimmo.domain.enumeration.UserGrade;
 
 public class UserTransferObject {
 	
-	@NotBlank
-	@NotEmpty
+	@NotEmpty(message="{uto.notempty.username}")
 	@Length(max=20)
 	private String username;
 	
-	@NotBlank
-	@NotEmpty
+	@NotEmpty(message="{uto.notempty.email}")
 	@Email
 	@Length(max=60)
 	private String email;
 	
-	@NotBlank
-	@NotEmpty
 	@Length(max=30)
 	private String firstName;
 	
-	@NotBlank
-	@NotEmpty
+	@NotEmpty(message="{uto.notempty.lastname}")
 	@Length(max=30)
 	private String lastName;
 	
-	@NotBlank
-	@NotEmpty
-	@Length(min=6, max=20)
+	@NotEmpty(message="{uto.notempty.password}")
+	@Length(min=6, max=20, message="{uto.length.password}")
 	private String password;
 	
-	@NotBlank
-	@NotEmpty
 	private String passwordConfirmation;
 	
 	private UserGrade grade;

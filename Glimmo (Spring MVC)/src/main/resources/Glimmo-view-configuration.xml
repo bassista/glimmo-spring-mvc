@@ -25,8 +25,4 @@
 			</list>
 		</property>
 	</bean>
-	
-	<!-- Configuring a default validator for JSR-303 validation -->
-	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" >
-	</bean>
 </beans>
