@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.apache.commons.beanutils.converters.SqlDateConverter;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
@@ -91,13 +93,14 @@ public class TestUserDao extends AbstractTransactionalTestNGSpringContextTests{
 	
 	@Test(dependsOnMethods={"testFindUserById"})
 	public void testUserModification(){
-		User user = userDao.findById(1L);
+		Long userId = 1L;
+		User user = userDao.findById(userId);
 		Assert.assertNotNull(user);
 		
 		String randomString = RandomStringUtils.randomAlphabetic(14);
 		user.setLastName(randomString);
 		userDao.saveOrUpdate(user);
-		user = userDao.findById(1L);
+		user = userDao.findById(userId);
 		Assert.assertNotNull(user);
 		
 		Assert.assertEquals(user.getLastName(), randomString);
@@ -123,5 +126,16 @@ public class TestUserDao extends AbstractTransactionalTestNGSpringContextTests{
 		userDao.delete(userId);
 		user = userDao.findById(userId);
 		Assert.assertNull(user);
+	}
+	
+	@Test(dependsOnMethods={"testDeletionById"})
+	public void testSelectionByCriteria(){
+		Criteria criteria = userDao.createCriteria();
+		criteria.add(Restrictions.eq("firstName", "Kobe"));
+		List<User> users = userDao.executeCriteria(criteria);
+		Assert.assertNotNull(users);
+		Assert.assertEquals(users.size(), 1);
+		User foundUser = users.get(0);
+		Assert.assertEquals(foundUser.getLastName(), "Bryant");
 	}
 }
