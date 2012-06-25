@@ -3,6 +3,8 @@ package be.glimmo.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Criteria;
+
 /**
  * This interface exposes the most generic methods that each concrete DAO within the same hierarchy should provide
  * @author kar.hoo.yiu
@@ -20,4 +22,7 @@ public interface GenericDao <T, ID extends Serializable>{
 	
 	public void delete(T entity);
 	public void delete(ID id);
+	
+	public Criteria createCriteria();
+	public List<T> executeCriteria(Criteria criteria);
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -59,6 +60,15 @@ public abstract class GenericDaoImpl <T, ID extends Serializable> implements Gen
 		if(entity != null){
 			getSession().delete(entity);
 		}
+	}
+	
+	public Criteria createCriteria() {
+		return getSession().createCriteria(persistentClass);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<T> executeCriteria(Criteria criteria) {
+		return criteria.list();
 	}
 	
 	/* ------------------------- GETTER + SETTER ------------------------- */
