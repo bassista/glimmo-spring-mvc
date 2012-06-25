@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import be.glimmo.dto.UserTransferObject;
 import be.glimmo.service.UserService;
-import be.glimmo.validator.PasswordValidator;
+import be.glimmo.validator.UserSubscriptionValidator;
 
 @Controller
 public class UserController {
@@ -20,7 +20,7 @@ public class UserController {
 	UserService userService;
 	
 	@Autowired
-	PasswordValidator passwordValidator;
+	UserSubscriptionValidator passwordValidator;
 	
 	@RequestMapping(method=RequestMethod.GET, value="register")
 	public String launchRegistration(Model model){

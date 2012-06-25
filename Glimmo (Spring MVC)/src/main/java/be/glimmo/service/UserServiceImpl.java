@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.text.ParseException;
 
 import org.apache.commons.lang3.time.DateUtils;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -42,6 +44,20 @@ public class UserServiceImpl implements UserService {
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void createUser(UserTransferObject userToCreate) {
 		createUser(userToCreate.getUsername(), userToCreate.getEmail(), userToCreate.getFirstName(), userToCreate.getLastName(), userToCreate.getPassword());
+	}
+
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public boolean checkEmailAvailability(String email) {
+		Criteria criteria = userDao.createCriteria();
+		criteria.add(Restrictions.eq("email", email));
+		return criteria.list().size() == 0;
+	}
+
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public boolean checkUsernameAvailability(String username) {
+		Criteria criteria = userDao.createCriteria();
+		criteria.add(Restrictions.eq("username", username));
+		return criteria.list().size() == 0;
 	}
 
 }
