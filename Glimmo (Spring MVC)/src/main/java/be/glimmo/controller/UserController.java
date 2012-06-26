@@ -28,7 +28,7 @@ public class UserController {
 		return "registration";
 	}
 	
-	@RequestMapping(method=RequestMethod.POST)
+	@RequestMapping(method=RequestMethod.POST, value="register")
 	public String processRegistration(Model model, @ModelAttribute(value="newUser")
 												   @Valid UserTransferObject user, 
 												   BindingResult bindingResult){
@@ -39,11 +39,7 @@ public class UserController {
 			return "registration";
 		}
 		
-		// TODO clean after test (testing user persistence)
 		userService.createUser(user);
-		model.addAttribute("loginUser", user);
-		// END
-		
 		return "home";
 	}
 }
