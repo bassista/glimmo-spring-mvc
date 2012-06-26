@@ -7,7 +7,7 @@
 	<!-- Spring Security configuration -->
 	<!-- having the "auto-config" attribute to TRUE will tell Spring to auto-configure Security filter, and so on -->
 	<security:http auto-config="true" use-expressions="true">
-		<security:intercept-url pattern="/**" access="isAnonymous()"/>
+		<!-- <security:intercept-url pattern="/**" access="isAnonymous()"/> -->
 		<!-- <security:form-login login-processing-url="/j_spring_security_check" login-page="/home" authentication-failure-url="/home?login_error=t"/> -->
 		<security:form-login login-page="/home" default-target-url="/home.do" authentication-failure-url="/home.do?errorLogin" />
 	</security:http>
