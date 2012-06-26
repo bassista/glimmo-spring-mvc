@@ -10,31 +10,11 @@
 <body>
 	<div id="loginPannel">
 		<security:authorize access="!isAuthenticated()">
-
-			<%-- <sf:form action="login.do" method="POST" modelAttribute="loginUser"> --%>
-			<%-- <sf:form method="POST" modelAttribute="loginUser"> --%>
-			<%--
-		<sf:form action="static/j_spring_security_check" method="post" modelAttribute="loginUser">
-			<table>
-				<tr>
-					<td><sf:label path="username">Username</sf:label></td>
-					<td><sf:input id="j_username" path="username" /></td>
-				</tr>
-				<tr>
-					<td><sf:label path="password">Password</sf:label></td>
-					<td><sf:password id="j_password" path="password" /></td>
-				</tr>
-			</table>
-			<input type="submit" value="Sign in">
-		</sf:form>
-		--%>
-
 			<form method="post" class="signin" action="j_spring_security_check">
 					<table cellspacing="0">
 						<tr>
 							<th><label for="username_or_email">Username/email</label></th>
-							<td><input id="username_or_email" name="j_username"
-								type="text" /></td>
+							<td><input id="username_or_email" name="j_username" type="text" /></td>
 						</tr>
 						<tr>
 							<th><label for="password">Password</label></th>
