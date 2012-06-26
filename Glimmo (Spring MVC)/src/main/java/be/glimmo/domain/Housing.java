@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
@@ -38,6 +40,7 @@ public abstract class Housing extends Good{
 	private boolean lift;
 	
 	@Column(name="HEATING_TYPE")
+	@Enumerated(EnumType.STRING)
 	private HeatingType heatingType;
 	
 	@Column(name="YARD")
