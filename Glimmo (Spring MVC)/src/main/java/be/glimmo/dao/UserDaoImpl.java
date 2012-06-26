@@ -12,10 +12,10 @@ public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao {
 		getSession().createQuery("DELETE FROM " + getEntityName()).executeUpdate();
 	}
 
-	public User findUserByUsernameOrEmail(String username, String email) {
+	public User findUserByUsernameOrEmail(String usernameOrEmail) {
 		Query query = getSession().getNamedQuery(User.QUERY_NAME_RETRIEVE_BY_USERNAME_OR_EMAIL);
-		query.setParameter("username", username);
-		query.setParameter("email", email);
+		query.setParameter("username", usernameOrEmail);
+		query.setParameter("email", usernameOrEmail);
 		return (User) query.uniqueResult();
 	}
 	
