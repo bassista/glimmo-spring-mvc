@@ -16,12 +16,21 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
 import be.glimmo.domain.enumeration.UserGrade;
 import be.glimmo.util.Encrypter;
 
 @Entity(name="Users")
 @Table(name="USERS")
+@NamedQueries(value={@NamedQuery(name=User.QUERY_NAME_RETRIEVE_BY_USERNAME_OR_EMAIL, 
+								 query="FROM Users u WHERE u.username = :username OR u.email = :email",
+								 comment="GLIMMO named query --> USER")})
 public class User {
+	/* ------------------------- Named Queries  -------------------------- */
+	public static final String QUERY_NAME_RETRIEVE_BY_USERNAME_OR_EMAIL = "1";
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="USER_ID", insertable=false, updatable=false)
