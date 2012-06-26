@@ -86,13 +86,12 @@ public class TestUserDao extends AbstractTransactionalTestNGSpringContextTests{
 		String username = params[0].toString();
 		String email = params[1].toString();
 		
-		User user = userDao.findUserByUsernameOrEmail(username, "");
-		Assert.assertNotNull(user);
-		Assert.assertEquals(user.getEmail(), email);
+		User user1 = userDao.findUserByUsernameOrEmail(username);
+		User user2 = userDao.findUserByUsernameOrEmail(email);
 		
-		user = userDao.findUserByUsernameOrEmail("", email);
-		Assert.assertNotNull(user);
-		Assert.assertEquals(user.getUsername(), username);
+		Assert.assertEquals(user1.getEmail(), user2.getEmail());
+		Assert.assertEquals(user1.getUsername(), user2.getUsername());
+		Assert.assertEquals(user1.getId(), user2.getId());
 	}
 	
 	@Test(dependsOnMethods={"testUserCreation"})
