@@ -76,6 +76,25 @@ public class TestUserDao extends AbstractTransactionalTestNGSpringContextTests{
 		Assert.assertEquals(user.getUsername(), users[0][0]);
 	}
 	
+	/**
+	 * Testing the retrieval of users based on either the username, or the email.
+	 * @param params Array of Object, so that we could reuse an existing data provider without having to 
+	 * define as many arguments
+	 */
+	@Test(dependsOnMethods={"testUserCreation"}, dataProvider="usersProvider")
+	public void testFindUserByUsernameOrEmail(Object ... params){
+		String username = params[0].toString();
+		String email = params[1].toString();
+		
+		User user = userDao.findUserByUsernameOrEmail(username, "");
+		Assert.assertNotNull(user);
+		Assert.assertEquals(user.getEmail(), email);
+		
+		user = userDao.findUserByUsernameOrEmail("", email);
+		Assert.assertNotNull(user);
+		Assert.assertEquals(user.getUsername(), username);
+	}
+	
 	@Test(dependsOnMethods={"testUserCreation"})
 	public void testAllUsersRetrieval(){
 		List<User> allUsers = userDao.findAll();
