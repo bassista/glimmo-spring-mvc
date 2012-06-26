@@ -48,4 +48,9 @@ public class TestEncrypter {
 	public void testEncryptionValidArgument(String pwd){
 		Assert.assertNotNull(Encrypter.encrypt(pwd));
 	}
+	
+	@Test
+	public void testEncryptionResult(){
+		Assert.assertEquals(Encrypter.encrypt("secret"), "5ebe2294ecd0e0f08eab7690d2a6ee69");
+	}
 }
