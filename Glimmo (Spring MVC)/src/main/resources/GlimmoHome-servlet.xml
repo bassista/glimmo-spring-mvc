@@ -17,8 +17,9 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 	
-	<import resource="classpath:Glimmo-context-configuration.xml" />
-	<import resource="classpath:Glimmo-persistence-configuration.xml" />	
-	<import resource="classpath:Glimmo-view-configuration.xml"/>	
-
+<!-- 	<import resource="classpath:Glimmo-context-configuration.xml" />
+	<import resource="classpath:Glimmo-persistence-configuration.xml" />
+	<import resource="classpath:Glimmo-view-configuration.xml"/>
+	<import resource="classpath:Glimmo-security-configuration.xml" /> -->
+	
 </beans>

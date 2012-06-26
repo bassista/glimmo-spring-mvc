@@ -9,14 +9,28 @@
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 	
+	<!-- Listener to load multiple configuration files into the same Spring context (seems necessary when enabling Spring security) -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> 
+	</listener>
+
+	<!-- Overriding Spring MVC default behavior (should be moved to application context level instead of servlet context, otherwise, won't be visible to 
+	     Spring Security -->
+	<context-param>
+		<description>Overriding the default behavior : DispatcherServlet Spring configuration file won't be looked for in the WEB-INF directory</description>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+				classpath:Glimmo-context-configuration.xml
+				classpath:Glimmo-persistence-configuration.xml
+				classpath:Glimmo-view-configuration.xml
+				classpath:Glimmo-security-configuration.xml
+		</param-value>
+	</context-param>
 	
 	<servlet>
 		<servlet-name>GlimmoHome</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<!-- Overriding Spring MVC default behavior -->
 		<init-param>
-			<description>Overriding the default behavior : DispatcherServlet Spring configuration file won't be looked for in 
-		     the WEB-INF directory</description>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:GlimmoHome-servlet.xml</param-value>
 		</init-param>
@@ -32,4 +46,25 @@
 		<servlet-name>GlimmoHome</servlet-name>
 		<url-pattern>/index.html</url-pattern>
 	</servlet-mapping>
+	
+	<!-- Spring security configuration -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+<!-- 	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/index.html</url-pattern>
+	</filter-mapping> -->
+	
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>
