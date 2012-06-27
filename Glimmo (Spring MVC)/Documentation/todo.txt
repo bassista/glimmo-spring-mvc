@@ -1,1 +1,3 @@
 - implementing an email feature to resend the password, in case the user forgot his
+- implementing navigation menu to give access to advertisement creation
+- implementing advertisement creation
