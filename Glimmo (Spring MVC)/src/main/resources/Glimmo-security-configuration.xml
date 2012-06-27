@@ -9,7 +9,7 @@
 	<security:http auto-config="true" use-expressions="true">
 		<!-- <security:intercept-url pattern="/**" access="isAnonymous()"/> -->
 		<security:form-login login-page="/home" default-target-url="/home.do" authentication-failure-url="/home.do?errorLogin" />
-		<security:logout invalidate-session="true" logout-success-url="/register.do"/>
+		<security:logout invalidate-session="true" logout-success-url="/home.do"/>
 		<security:remember-me key="glimmo-remember-me" token-validity-seconds="108000" /> 
 	</security:http>
 
