@@ -2,3 +2,4 @@
 - implementing navigation menu to give access to advertisement creation
 - implementing advertisement creation
 - implementing ADMINISTRATION features
+- explorer how to implement a navigation breadcrumb
