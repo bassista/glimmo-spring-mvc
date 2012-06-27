@@ -33,8 +33,12 @@
 						</tr>
 					</table>
 			</form>
-
 			<a href="<s:url value="/register.do" />">Register</a>
+		</security:authorize>
+		
+		<security:authorize access="isAuthenticated()">
+			Welcome, <security:authentication property="principal.username"/>
+			<a href="<s:url value="j_spring_security_logout" /> ">Sign out</a>
 		</security:authorize>
 	</div>
 </body>
