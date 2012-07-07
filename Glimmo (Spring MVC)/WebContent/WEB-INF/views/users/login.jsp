@@ -1,15 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="s" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="<s:url value="/resources/"/>css/content.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div id="loginPannel">
 		<security:authorize access="!isAuthenticated()">
+			<c:if test="${errorOccurred}">
+				<div class="loginError">
+					Could not sign in, please check your login/password...
+				</div>
+			</c:if>
+		
 			<form method="post" class="signin" action="j_spring_security_check">
 					<table cellspacing="0">
 						<tr>
@@ -33,8 +41,12 @@
 						</tr>
 					</table>
 			</form>
-
 			<a href="<s:url value="/register.do" />">Register</a>
+		</security:authorize>
+		
+		<security:authorize access="isAuthenticated()">
+			Welcome, <security:authentication property="principal.username"/>
+			<a href="<s:url value="j_spring_security_logout" /> ">Sign out</a>
 		</security:authorize>
 	</div>
 </body>

@@ -17,9 +17,6 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 	
-<!-- 	<import resource="classpath:Glimmo-context-configuration.xml" />
-	<import resource="classpath:Glimmo-persistence-configuration.xml" />
-	<import resource="classpath:Glimmo-view-configuration.xml"/>
-	<import resource="classpath:Glimmo-security-configuration.xml" /> -->
-	
+	<!-- Empty configuration file as is seems that a file named "[SERVLET_NAME]-servlet.xml" is still required, even though we've defined 
+	     a context parameter in the web.xml file to specify the configuration files to be loaded -->	
 </beans>

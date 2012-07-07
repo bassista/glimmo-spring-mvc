@@ -1,0 +1,7 @@
+- find an appropriate use case to work with Aspects
+- find an appropriate use case to work with Schedule tasks (Quartz?)
+- implementing an email feature to resend the password, in case the user forgot his
+- implementing navigation menu to give access to advertisement creation
+- implementing advertisement creation
+- implementing ADMINISTRATION features
+- explorer how to implement a navigation breadcrumb

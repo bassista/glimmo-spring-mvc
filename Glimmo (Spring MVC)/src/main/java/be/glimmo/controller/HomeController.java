@@ -24,8 +24,9 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="home", params="errorLogin")
-	public String directToHomepageWithLoginError(){
-		// TODO display a message telling the user that the credentials he provided are not valid
+	public String directToHomepageWithLoginError(Model model){
+		// Adding an attribute to flag that an error happened at login
+		model.addAttribute("errorOccurred", true);
 		
 		return "home";
 	}
