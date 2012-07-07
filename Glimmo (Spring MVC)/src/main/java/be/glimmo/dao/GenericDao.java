@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 
 /**
  * This interface exposes the most generic methods that each concrete DAO within the same hierarchy should provide
@@ -13,6 +14,7 @@ import org.hibernate.Criteria;
  * @param <ID>
  */
 public interface GenericDao <T, ID extends Serializable>{
+	public Session getSession();
 	public void save(T entity);
 	public void saveOrUpdate(T entity);
 	
