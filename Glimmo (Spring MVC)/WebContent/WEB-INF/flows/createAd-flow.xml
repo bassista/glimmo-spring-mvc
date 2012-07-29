@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<!-- TODO: integrate tiles view resolver so that we could display the same templated views -->
+
+	<!-- Displaying a "stand-alone" JSP page -->
+<!-- 
+    <view-state id="createAd" view="ca-step1.jsp">
+        <transition on="login" to="validateCredentialsAction" />
+    </view-state>
+ -->
+ 	
+ 	<!-- Tested OK -->
+<!--  	<view-state id="createAd" view="home">
+ 	</view-state> -->
+ 	
+ 	<view-state id="createAd" view="createAd-step1"/>
+ 	
+</flow>

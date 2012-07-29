@@ -14,7 +14,10 @@
 		<ul>
 			<li class='active '><a href='home.do'><span>Home</span></a></li>
 			<li><a href='search.do'><span>Search a good</span></a></li>
-			<li><a href='createAd.do'><span>Post an advertisement</span></a></li>
+			
+			<security:authorize access="isAuthenticated()">
+				<li><a href='createAd.do'><span>Post an advertisement</span></a></li>
+			</security:authorize>
 
 			<security:authorize access="hasRole('ADMIN')">
 				<li><a href='admin.do'><span>Administration corner</span></a></li>

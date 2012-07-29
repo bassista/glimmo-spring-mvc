@@ -24,6 +24,7 @@
 				classpath:Glimmo-persistence-configuration.xml
 				classpath:Glimmo-view-configuration.xml
 				classpath:Glimmo-security-configuration.xml
+				classpath:Glimmo-webflow-configuration.xml
 		</param-value>
 	</context-param>
 	
