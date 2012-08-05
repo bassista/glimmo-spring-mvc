@@ -8,20 +8,22 @@
 <link href="<s:url value="/resources/"/>css/registration.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<div id="form">
+<%-- 	<div id="form">
 		<sf:form method="POST" modelAttribute="newAdvertisement">
 			<table>
 				<tr>
-					<td><sf:label path="adType">Advertisement type</sf:label></td>
-					<td><sf:input id="adType" path="adType" /></td>
+					<td><sf:label path="advertisementType">Advertisement type</sf:label></td>
+					<td><sf:input id="advertisementType" path="adType" /></td>
 				</tr>
 				<tr>
-					<td><sf:label path="publicationDate">Date to publish</sf:label></td>
-					<td><sf:input id="publicationDate" path="publicationDate" /><br/><sf:errors path="publicationDate" cssClass="error"/></td>
+					<td><sf:label path="publishDate">Date to publish</sf:label></td>
+					<td><sf:input id="publishDate" path="publicationDate" /><br/><sf:errors path="publicationDate" cssClass="error"/></td>
 				</tr>
 			</table>
-			<input type="submit" name="_eventId_go-to-step2" value="Next">
+			<input type="submit" name="_eventId_go-to-step2" value="Create new account">
 		</sf:form>
-	</div>
+	</div> --%>
+	
+	nombre de chambre, adresse, ... (voir screenshot)
 </body>
 </html>

@@ -48,12 +48,14 @@
 	<!-- Watch out here, if we don't specify the "flow-builder-services" attribute, Spring webflow will use
 	     the default configuration (no use of Tiles) -->
     <webflow:flow-registry id="flowRegistry" flow-builder-services="flowBuilderServices">
-        <webflow:flow-location id="createAd" path="/WEB-INF/flows/createAd-flow.xml" />
+        <webflow:flow-location id="createAd" path="/WEB-INF/flows/createAd-flow.xml" />                
     </webflow:flow-registry>
     
     
     <!-- View resolving configuration -->
-    <webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="viewFactoryCreator"/>
+    <webflow:flow-builder-services id="flowBuilderServices" 
+    	view-factory-creator="viewFactoryCreator" 
+    	conversion-service="customConversionService"/>
 
 	<bean id="viewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
 		<property name="viewResolvers" ref="tilesViewResolver" />
@@ -62,10 +64,9 @@
 	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
         <property name="order" value="0" />
-</bean>
+	</bean>
 
 	<bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
     	<property name="definitions" value="WEB-INF/tiles-view-definitions.xml" />
 	</bean>
-
 </beans>

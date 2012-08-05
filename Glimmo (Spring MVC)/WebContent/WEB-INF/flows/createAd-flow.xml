@@ -17,6 +17,12 @@
 <!--  	<view-state id="createAd" view="home">
  	</view-state> -->
  	
- 	<view-state id="createAd" view="createAd-step1"/>
+ 	<var name="newAdvertisement" class="be.glimmo.dto.AdvertisementTransferObject"/>
+ 	
+ 	<view-state id="createAd" view="createAd-step1" model="newAdvertisement" popup="true">
+ 		<transition on="go-to-step2" to="step2"/>
+ 	</view-state>
+ 	
+ 	<view-state id="step2" view="createAd-step2" model="newAdvertisement"></view-state>
  	
 </flow>
