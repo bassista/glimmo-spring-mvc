@@ -1,10 +1,35 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <html lang="ENG">
 <head>
+
+<!-- Spring URL variable -->
+<s:url value="/resources/css" var="urlVarCss" />
+<s:url value="/resources/js/jquery" var="urlVarJQuery" />
+
+<link href="${urlVarCss}/main_template.css" rel="stylesheet" type="text/css" />
+<link href="${urlVarCss}/navigation.css" rel="stylesheet" type="text/css" />
+<link href="${urlVarCss}/content.css" rel="stylesheet" type="text/css"/>
+<link href="${urlVarCss}/registration.css" rel="stylesheet" type="text/css" />
+<link href="${urlVarCss}/jquery-ui-1.8.22.custom.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="${urlVarJQuery}/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="${urlVarJQuery}/jquery-ui-1.8.22.custom.min.js"></script>
+
+
 <title>Glimmo</title>
-	<link href="<s:url value="/resources/"/>css/main_template.css" rel="stylesheet" type="text/css" />
 </head>
+
+<script type="text/javascript">
+	$(document).ready(function() {		
+		$("#publicationDate").datepicker({
+			dateFormat: 'dd/mm/yy' // Belgian date format
+		});	
+}); 
+</script>
 
 <body>
 	<div id="banner">
