@@ -4,23 +4,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
         http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
-	<!-- TODO: integrate tiles view resolver so that we could display the same templated views -->
-
-	<!-- Displaying a "stand-alone" JSP page -->
-<!-- 
-    <view-state id="createAd" view="ca-step1.jsp">
-        <transition on="login" to="validateCredentialsAction" />
-    </view-state>
- -->
- 	
- 	<!-- Tested OK -->
-<!--  	<view-state id="createAd" view="home">
- 	</view-state> -->
- 	
  	<var name="newAdvertisement" class="be.glimmo.dto.AdvertisementTransferObject"/>
  	
  	<view-state id="createAd" view="createAd-step1" model="newAdvertisement" popup="true">
- 		<transition on="go-to-step2" to="step2"/>
+ 		<transition on="go-to-step2" to="step2"/> 		
  	</view-state>
  	
  	<view-state id="step2" view="createAd-step2" model="newAdvertisement"></view-state>

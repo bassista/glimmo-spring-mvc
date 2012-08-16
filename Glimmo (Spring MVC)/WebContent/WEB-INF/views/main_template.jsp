@@ -14,6 +14,7 @@
 <link href="${urlVarCss}/navigation.css" rel="stylesheet" type="text/css" />
 <link href="${urlVarCss}/content.css" rel="stylesheet" type="text/css"/>
 <link href="${urlVarCss}/registration.css" rel="stylesheet" type="text/css" />
+<link href="${urlVarCss}/advertisement_creation.css" rel="stylesheet" type="text/css" />
 <link href="${urlVarCss}/jquery-ui-1.8.22.custom.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="${urlVarJQuery}/jquery-1.7.2.min.js"></script>
@@ -22,14 +23,6 @@
 
 <title>Glimmo</title>
 </head>
-
-<script type="text/javascript">
-	$(document).ready(function() {		
-		$("#publicationDate").datepicker({
-			dateFormat: 'dd/mm/yy' // Belgian date format
-		});	
-}); 
-</script>
 
 <body>
 	<div id="banner">

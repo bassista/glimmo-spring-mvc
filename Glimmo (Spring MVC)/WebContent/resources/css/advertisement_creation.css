@@ -1,0 +1,9 @@
+.fit_textarea {
+/* 	-webkit-box-sizing: border-box; Safari/Chrome, other WebKit
+	-moz-box-sizing: border-box; Firefox, other Gecko
+	box-sizing: border-box; Opera/IE 8+ */
+	
+	width: 100%; 
+	border: 1px solid #333; 
+	padding: 0px;
+}
