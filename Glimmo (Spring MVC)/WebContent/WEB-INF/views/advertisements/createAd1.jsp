@@ -16,7 +16,8 @@
 		
  		$("#descriptionsAccordion").accordion({
 				collapsible: true,
-				autoHeight: false
+				active: false,
+				autoHeight: false				
 		});
 	});	
 </script>
@@ -75,6 +76,25 @@
 		
 		<fieldset id="addressSet">
 			<legend>Address</legend>
+			<table>
+				<tr>
+					<td><sf:label path="address.street">Street</sf:label></td>
+					<td><sf:input id="street" path="address.street" />
+					<td><sf:label path="address.number">Nr.</sf:label></td>
+					<td><sf:input id="number" path="address.number" />
+				</tr>
+				<tr>
+					<td><sf:label path="address.zipCode">Zipcode</sf:label></td>
+					<td><sf:input id="zipCode" path="address.zipCode"/><br />
+					<sf:errors path="address.zipCode" cssClass="error" /></td>
+					<td><sf:label path="address.city">City</sf:label></td>
+					<td><sf:input id="city" path="address.city"/><br />
+					<sf:errors path="address.city" cssClass="error" /></td>				
+					<td><sf:label path="address.country">Country</sf:label></td>
+					<td><sf:input id="country" path="address.country"/><br />
+					<sf:errors path="address.country" cssClass="error" /></td>			
+				</tr>
+			</table>
 		</fieldset>
 		<input type="submit" name="_eventId_go-to-step2" value="Next">
 	</sf:form>

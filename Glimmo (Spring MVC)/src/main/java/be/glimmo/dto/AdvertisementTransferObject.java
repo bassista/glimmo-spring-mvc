@@ -24,7 +24,8 @@ public class AdvertisementTransferObject implements Serializable{
 	private GoodType goodType;
 	private String descriptionFr;
 	private String descriptionNl;
-	private String descriptionEn;	
+	private String descriptionEn;
+	private LocationTransfertObject address = new LocationTransfertObject();
 	
 	public Date getPublicationDate() {
 		return publicationDate;
@@ -80,6 +81,14 @@ public class AdvertisementTransferObject implements Serializable{
 	
 	public void setDescriptionEn(String descriptionEn) {
 		this.descriptionEn = descriptionEn;
+	}
+
+	public LocationTransfertObject getAddress() {
+		return address;
+	}
+	
+	public void setAddress(LocationTransfertObject address) {
+		this.address = address;
 	}
 	
 	/* ------------------------- Validation method ------------------------- */
