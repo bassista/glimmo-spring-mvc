@@ -61,15 +61,15 @@
 				<h3>
 					<a href="#">Description (Français)</a>
 				</h3>
-				<sf:textarea path="descriptionFr" class="fit_textarea" />
+				<sf:textarea path="descriptionFr" class="fit_textarea" rows="8"/>
 				<h3>
 					<a href="#">Beschrijving</a>
 				</h3>
-				<sf:textarea path="descriptionNl" class="fit_textarea" />
+				<sf:textarea path="descriptionNl" class="fit_textarea" rows="8" />
 				<h3>
 					<a href="#">Description (English)</a>
 				</h3>
-				<sf:textarea path="descriptionEn" class="fit_textarea" />
+				<sf:textarea path="descriptionEn" class="fit_textarea" rows="8" />
 			</div>
 		</fieldset>
 		
