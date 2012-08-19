@@ -9,8 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import be.glimmo.dao.AdvertisementDao;
 import be.glimmo.domain.Advertisement;
+import be.glimmo.dto.AdvertisementTransferObject;
 
-@Service
+@Service("advertisementService")
 public class AdvertisementServiceImpl implements AdvertisementService{
 	@Autowired
 	private AdvertisementDao advertisementDao;
@@ -21,4 +22,16 @@ public class AdvertisementServiceImpl implements AdvertisementService{
 		return list;
 	}
 
+	@Transactional(propagation=Propagation.REQUIRED)
+	public boolean persistAdvertisement(AdvertisementTransferObject adDto) {
+		Advertisement ad = convertToEntity(adDto);
+		advertisementDao.save(ad);
+		return false;
+	}
+
+	/* ---------------------- Convenience methods ----------------------- */
+	private Advertisement convertToEntity(AdvertisementTransferObject adDto){
+		Advertisement ad = new Advertisement(true, adDto.getPublicationDate(), adDto.getDeadline(), adDto.getAdType());
+		return ad;
+	}
 }

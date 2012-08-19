@@ -30,4 +30,9 @@
 		<put-attribute name="right" value=""/>
 	</definition>
 	
+	<definition name="createAd-finish" extends="template">
+		<put-attribute name="center" value="/WEB-INF/views/advertisements/finish.jsp" />
+		<put-attribute name="right" value=""/>
+	</definition>
+	
 </tiles-definitions>

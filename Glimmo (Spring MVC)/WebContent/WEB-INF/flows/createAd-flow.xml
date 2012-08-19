@@ -7,9 +7,17 @@
  	<var name="newAdvertisement" class="be.glimmo.dto.AdvertisementTransferObject"/>
  	
  	<view-state id="createAd" view="createAd-step1" model="newAdvertisement" popup="true">
- 		<transition on="go-to-step2" to="step2"/> 		
+ 		<!-- <transition on="go-to-step2" to="step2"/>  -->		
+ 		<transition on="go-to-step2" to="persistAd"/>
  	</view-state>
  	
- 	<view-state id="step2" view="createAd-step2" model="newAdvertisement"></view-state>
+ 	<action-state id="persistAd">
+ 		<evaluate expression="advertisementService.persistAdvertisement(newAdvertisement) == true" />
+ 		<transition to="finish-step" />
+ 	</action-state>
+ 	
+ 	<view-state id="finish-step" view="createAd-finish"/>
+ 	
+ <!-- 	<view-state id="step2" view="createAd-step2" model="newAdvertisement"></view-state> -->
  	
 </flow>
