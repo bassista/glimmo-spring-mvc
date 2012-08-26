@@ -37,12 +37,12 @@
 				</tr>
 				<tr>
 					<td><sf:label path="publicationDate">Publication date</sf:label></td>
-					<td><sf:input id="publicationDate" path="publicationDate" /> <br />
+					<td><sf:input id="publicationDate" path="publicationDate" autocomplete="off"/> <br />
 					<sf:errors path="publicationDate" cssClass="error" /></td>
 				</tr>
 				<tr>
 					<td><sf:label path="deadline">Expiration date</sf:label></td>
-					<td><sf:input id="deadline" path="deadline" /> <br />
+					<td><sf:input id="deadline" path="deadline" autocomplete="off" /> <br />
 					<sf:errors path="deadline" cssClass="error" /></td>
 				</tr>
 				<tr>
@@ -96,6 +96,6 @@
 				</tr>
 			</table>
 		</fieldset>
-		<input type="submit" name="_eventId_go-to-step2" value="Next">
+		<input type="submit" name="_eventId_go-to-next-step" value="Next step">
 	</sf:form>
 </div>
