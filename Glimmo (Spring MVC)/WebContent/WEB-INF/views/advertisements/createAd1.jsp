@@ -78,21 +78,21 @@
 			<legend>Address</legend>
 			<table>
 				<tr>
-					<td><sf:label path="address.street">Street</sf:label></td>
-					<td><sf:input id="street" path="address.street" />
-					<td><sf:label path="address.number">Nr.</sf:label></td>
-					<td><sf:input id="number" path="address.number" />
+					<td><sf:label path="street">Street</sf:label></td>
+					<td><sf:input id="street" path="street" />
+					<td><sf:label path="number">Nr.</sf:label></td>
+					<td><sf:input id="number" path="number" />
 				</tr>
 				<tr>
-					<td><sf:label path="address.zipCode">Zipcode</sf:label></td>
-					<td><sf:input id="zipCode" path="address.zipCode"/><br />
-					<sf:errors path="address.zipCode" cssClass="error" /></td>
-					<td><sf:label path="address.city">City</sf:label></td>
-					<td><sf:input id="city" path="address.city"/><br />
-					<sf:errors path="address.city" cssClass="error" /></td>				
-					<td><sf:label path="address.country">Country</sf:label></td>
-					<td><sf:input id="country" path="address.country"/><br />
-					<sf:errors path="address.country" cssClass="error" /></td>			
+					<td><sf:label path="zipCode">Zipcode</sf:label></td>
+					<td><sf:input id="zipCode" path="zipCode"/><br />
+					<sf:errors path="zipCode" cssClass="error" /></td>
+					<td><sf:label path="city">City</sf:label></td>
+					<td><sf:input id="city" path="city"/><br />
+					<sf:errors path="city" cssClass="error" /></td>				
+					<td><sf:label path="country">Country</sf:label></td>
+					<td><sf:input id="country" path="country"/><br />
+					<sf:errors path="country" cssClass="error" /></td>			
 				</tr>
 			</table>
 		</fieldset>

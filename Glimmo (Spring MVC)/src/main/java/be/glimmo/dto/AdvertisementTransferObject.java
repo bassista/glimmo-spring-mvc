@@ -3,6 +3,8 @@ package be.glimmo.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.binding.message.MessageResolver;
@@ -25,7 +27,11 @@ public class AdvertisementTransferObject implements Serializable{
 	private String descriptionFr;
 	private String descriptionNl;
 	private String descriptionEn;
-	private LocationTransfertObject address = new LocationTransfertObject();
+	private String street;
+	private String number;
+	private String zipCode;
+	private String city;
+	private String country;
 	
 	public Date getPublicationDate() {
 		return publicationDate;
@@ -82,13 +88,45 @@ public class AdvertisementTransferObject implements Serializable{
 	public void setDescriptionEn(String descriptionEn) {
 		this.descriptionEn = descriptionEn;
 	}
-
-	public LocationTransfertObject getAddress() {
-		return address;
+	
+	public String getStreet() {
+		return street;
 	}
 	
-	public void setAddress(LocationTransfertObject address) {
-		this.address = address;
+	public void setStreet(String street) {
+		this.street = street;
+	}
+	
+	public String getNumber() {
+		return number;
+	}
+	
+	public void setNumber(String number) {
+		this.number = number;
+	}
+	
+	public String getZipCode() {
+		return zipCode;
+	}
+	
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
+	
+	public String getCity() {
+		return city;
+	}
+	
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	public String getCountry() {
+		return country;
+	}
+	
+	public void setCountry(String country) {
+		this.country = country;
 	}
 	
 	/* ------------------------- Validation method ------------------------- */
