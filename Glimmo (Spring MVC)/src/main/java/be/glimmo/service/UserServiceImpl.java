@@ -41,6 +41,11 @@ public class UserServiceImpl implements UserService {
 		return userDao.findById(id);
 	}
 	
+	@Transactional(propagation=Propagation.SUPPORTS)
+	public User findUserByUsername(String username) {
+		return userDao.findUserByUsernameOrEmail(username);
+	}
+	
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void createUser(UserTransferObject userToCreate) {
 		createUser(userToCreate.getUsername(), userToCreate.getEmail(), userToCreate.getFirstName(), userToCreate.getLastName(), userToCreate.getPassword());
@@ -59,5 +64,4 @@ public class UserServiceImpl implements UserService {
 		criteria.add(Restrictions.eq("username", username));
 		return criteria.list().size() == 0;
 	}
-
 }

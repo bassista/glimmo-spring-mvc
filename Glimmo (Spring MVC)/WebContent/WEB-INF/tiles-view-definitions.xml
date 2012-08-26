@@ -25,8 +25,8 @@
 		<put-attribute name="right" value=""/>
 	</definition>
 	
-	<definition name="createAd-step2" extends="template">
-		<put-attribute name="center" value="/WEB-INF/views/advertisements/createAd2.jsp" />
+	<definition name="landDesc" extends="template">
+		<put-attribute name="center" value="/WEB-INF/views/advertisements/land-description.jsp" />
 		<put-attribute name="right" value=""/>
 	</definition>
 	

@@ -4,3 +4,11 @@
 	width: 100%;
 	resize: none;
 }
+
+.ui-slider-range{
+	background: blue;
+}
+
+.ui-slider-handle{
+	border-color: blue;
+}

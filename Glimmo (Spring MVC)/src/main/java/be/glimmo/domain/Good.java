@@ -30,8 +30,8 @@ public abstract class Good {
 	@Column(name="GOOD_ID")
 	private Long id = null;
 	
-	@Column(name="SURFACE", scale=2)
-	private Double surface;
+	@Column(name="SURFACE")
+	private Integer surface;
 	
 	// embedded attribute
 	private Location location;
@@ -51,11 +51,11 @@ public abstract class Good {
 		return id;
 	}
 	
-	public Double getSurface() {
+	public Integer getSurface() {
 		return surface;
 	}
 	
-	public void setSurface(Double surface) {
+	public void setSurface(Integer surface) {
 		this.surface = surface;
 	}
 	

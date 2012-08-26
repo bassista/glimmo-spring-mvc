@@ -14,7 +14,7 @@ import be.glimmo.domain.enumeration.AdvertisementType;
 
 public class AdvertisementTransferObject implements Serializable{
 	
-	enum GoodType{
+	public static enum GoodType{
 		LAND, APPARTMENT, HOUSE				
 	}
 	

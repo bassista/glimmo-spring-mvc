@@ -5,28 +5,25 @@
         http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
  	<var name="newAdvertisement" class="be.glimmo.dto.AdvertisementTransferObject"/>
+ 	<var name="landDescription" class="be.glimmo.dto.LandDescriptionTransferObject"/>
 
  	<view-state id="createAd" view="createAd-step1" model="newAdvertisement">
  		<transition on="go-to-next-step" to="dispatchGoodType"/>
  	</view-state>
  	
  	<decision-state id="dispatchGoodType">
- 		<if test="newAdvertisement.goodType.toString() == 'LAND'"  then="finish-step" else="persistAd"/> 	
+ 		<if test="newAdvertisement.goodType.toString() == 'LAND'"  then="landDescription" else="persistAd"/> 	
  	</decision-state>
  	
-<!-- 	<view-state id="describeGood" view="createAd-step2" model="newAdvertisement">
- 		<transition on="go-to-step2" to="persistAd"/> 	 	
- 	</view-state> -->
- 	 	
- 	
+ 	<view-state id="landDescription" view="landDesc" model="landDescription">
+ 		<transition on="go-to-previous-step" to="createAd"/>
+ 		<transition on="finish" to="persistAd" />
+ 	</view-state>
+ 	 	 	
  	<action-state id="persistAd">
- 		<evaluate expression="advertisementService.persistAdvertisement(newAdvertisement) == true" />
+ 		<evaluate expression="advertisementService.persistAdvertisement(newAdvertisement, landDescription) == true" />
  		<transition to="finish-step" />
  	</action-state>
- 
  	
- 	<view-state id="finish-step" view="createAd-finish"/>
- 	
- <!-- 	<view-state id="step2" view="createAd-step2" model="newAdvertisement"></view-state> -->
- 	
+ 	<view-state id="finish-step" view="createAd-finish"/>	
 </flow>
