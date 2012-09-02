@@ -7,7 +7,7 @@ public class LandDescriptionTransferObject extends GoodDescriptionTransferObject
 	
 	private boolean licenceToBuild;
 	
-	public boolean hasLicenceToBuild() {
+	public boolean getLicenceToBuild() { // has to be getXXX (not hasXXX) to comply with Spring Expression Language accessor
 		return licenceToBuild;
 	}
 	

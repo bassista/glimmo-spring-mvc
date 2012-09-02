@@ -3,8 +3,6 @@ package be.glimmo.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.binding.message.MessageResolver;

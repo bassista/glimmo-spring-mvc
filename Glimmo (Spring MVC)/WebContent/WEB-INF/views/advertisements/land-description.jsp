@@ -37,11 +37,16 @@
 						<div id="surfaceSlider"></div>
 					</td>
 				</tr>
-<%-- 				<tr>
-					<td><sf:label path="publicationDate">Publication date</sf:label></td>
-					<td><sf:input id="publicationDate" path="publicationDate" /> <br />
-					<sf:errors path="publicationDate" cssClass="error" /></td>
-				</tr> --%>
+				<tr>
+					<td>
+						<sf:label path="price">Price</sf:label>
+						<sf:input id="price" path="price" autocomplete="off" />
+					</td>
+					<td>
+						<sf:label path="licenceToBuild">License to build</sf:label>
+						<sf:checkbox id="licenceToBuild" path="licenceToBuild"  />
+					</td>
+				</tr>				
 			</table>
 		</fieldset>
 		<input type="submit" name="_eventId_go-to-previous-step" value="Previous step" />
