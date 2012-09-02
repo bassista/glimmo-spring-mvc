@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 
 @Entity(name="Price")
 @Table(name="PRICE")
-public class Price {
+public class Price implements Comparable<Price>{
 	@Id
 	@Column(name="START_VALIDITY", nullable=false, updatable=false)
 	@Temporal(TemporalType.DATE)
@@ -64,5 +64,9 @@ public class Price {
 		} else if (!startValidity.equals(other.startValidity))
 			return false;
 		return true;
+	}
+
+	public int compareTo(Price o) {
+		return this.startValidity.compareTo(o.getStartValidity());
 	}
 }
