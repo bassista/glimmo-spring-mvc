@@ -73,6 +73,7 @@ public class Description {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((language == null) ? 0 : language.hashCode());
 		return result;
 	}
 
@@ -87,6 +88,10 @@ public class Description {
 		Description other = (Description) obj;
 		if (id != other.id)
 			return false;
+		if (language != other.language)
+			return false;
 		return true;
 	}
+	
+	
 }
