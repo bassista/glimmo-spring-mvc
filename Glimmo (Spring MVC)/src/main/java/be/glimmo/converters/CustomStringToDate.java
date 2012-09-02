@@ -6,6 +6,6 @@ public class CustomStringToDate extends StringToDate{
 	
 	public CustomStringToDate(){
 		super();
-		setPattern("dd/mm/yyyy");
+		setPattern("dd/MM/yyyy");
 	}
 }
