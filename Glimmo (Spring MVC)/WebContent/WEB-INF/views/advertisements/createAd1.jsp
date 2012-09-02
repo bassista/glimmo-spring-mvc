@@ -64,7 +64,7 @@
 				</h3>
 				<sf:textarea path="descriptionFr" class="fit_textarea" rows="8"/>
 				<h3>
-					<a href="#">Beschrijving</a>
+					<a href="#">Beschrijving (Nederlands)</a>
 				</h3>
 				<sf:textarea path="descriptionNl" class="fit_textarea" rows="8" />
 				<h3>
