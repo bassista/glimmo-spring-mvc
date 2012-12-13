@@ -13,10 +13,6 @@ import be.glimmo.domain.enumeration.AdvertisementType;
 @Repository
 public class AdvertisementDaoImpl extends GenericDaoImpl<Advertisement, Long> implements AdvertisementDao {
 
-	public Advertisement findById(Long id) {
-		return super.findById(id);
-	}
-
 	@SuppressWarnings("unchecked")
 	public List<Advertisement> listAdvertisementByType(AdvertisementType advertisementType) {
 		Criteria criteria = getSession().createCriteria(getEntityName());
