@@ -19,7 +19,7 @@ public class Price implements Comparable<Price>{
 	@Temporal(TemporalType.DATE)
 	private Date startValidity; 
 
-	@Column(name="PRICE", nullable=false, updatable=false, precision=2)
+	@Column(name="PRICE", nullable=false, updatable=false)
 	private BigDecimal price;
 
 	/* -------------------------- Constructors --------------------------- */
